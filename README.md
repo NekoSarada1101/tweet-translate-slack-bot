@@ -1,0 +1,2 @@
+# tweet_translate_slack_bot
+英語のツイートを日本語に翻訳してSlackで表示する。
