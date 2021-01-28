@@ -17,12 +17,13 @@ def do_post(request):
     translated_text = result['translatedText']  # type: str
     print(translated_text)
 
-    set_settings(username)
+    result = set_settings("github")
+    print(result)
 
     data = {  # type: dict
-        "text": "{} *{}*\n{}".format(ICON_NAME, username, translated_text),
+        "text": "{} *{}*\n{}".format(result[1], username, translated_text),
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
-    response = requests.post(SLACK_WEBHOOK_URL, payload)
+    response = requests.post(result[0], payload)
     print(response)

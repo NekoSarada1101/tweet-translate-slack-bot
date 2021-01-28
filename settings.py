@@ -1,12 +1,8 @@
-SLACK_WEBHOOK_URL = ""
-ICON_NAME = ""
-
-
 # アカウントごとにSlackWebhookURLとアイコンを設定する
 def set_settings(username: str):
-    global SLACK_WEBHOOK_URL
-    global ICON_NAME
-    
+    slack_webhook_url = ""
+    icon_name = ""
+
     if username == "username1":
         "SLACK_WEBHOOK_URL1"
         "ICON_NAME1"
@@ -16,6 +12,4 @@ def set_settings(username: str):
     elif username == "username3":
         "SLACK_WEBHOOK_URL3"
         "ICON_NAME3"
-    
-    print(SLACK_WEBHOOK_URL)
-    print(ICON_NAME)
+    return slack_webhook_url, icon_name
