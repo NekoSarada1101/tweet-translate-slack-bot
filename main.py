@@ -17,7 +17,7 @@ def do_post(request):
     translated_text = result['translatedText']  # type: str
     print(translated_text)
 
-    result = set_settings("github")
+    result = set_settings(username)
     print(result)
 
     data = {  # type: dict
