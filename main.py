@@ -12,6 +12,11 @@ def do_post(request):
 
     print("text={}, username={}".format(text, username))
 
+    result = set_settings(username)
+    print(result)
+    if result[0] == "" or result[1] == "":
+        return
+
     if text[0] == "@":  # メンションなら
         return
 
@@ -19,9 +24,6 @@ def do_post(request):
     result = translate_client.translate(text, target_language="ja")
     translated_text = result['translatedText']  # type: str
     print(translated_text)
-
-    result = set_settings(username)
-    print(result)
 
     data = {  # type: dict
         "text": "{} *{}*\n{}".format(result[1], username, translated_text),
