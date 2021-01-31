@@ -21,8 +21,8 @@ def do_post(request):
         return
 
     # 翻訳
-    result = translate_client.translate(text, target_language="ja")
-    translated_text = result['translatedText']  # type: str
+    translate_result = translate_client.translate(text, target_language="ja")
+    translated_text = translate_result['translatedText']  # type: str
     print(translated_text)
 
     data = {  # type: dict
