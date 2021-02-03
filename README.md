@@ -10,5 +10,7 @@
 * [Cloud Functions](https://cloud.google.com/functions?hl=ja)
 * [IFTTT](https://ifttt.com)
 
+### 使用方法
+
 ## ライセンス
 [MIT](https://github.com/NekoSarada1101/tweet-translate-slack-bot/blob/main/LICENSE)
