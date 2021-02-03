@@ -32,3 +32,4 @@ def do_post(request):
     payload = json.dumps(data).encode("utf-8")  # type: json
     response = requests.post(result[0], payload)
     print(response)
+    return "translate"
