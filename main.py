@@ -11,9 +11,9 @@ def do_post(request):
     username = request.form.get('username')  # type: str
 
     print("text={}, username={}".format(text, username))
+    display_data = get_settings(user_name)
+    print(display_data)
 
-    result = set_settings(username)
-    print(result)
     if result[0] == "" or result[1] == "":
         return
 
@@ -26,10 +26,10 @@ def do_post(request):
     print(translated_text)
 
     data = {  # type: dict
-        "text": "{} *{}*\n{}".format(result[1], username, translated_text),
+        "text": "{} *{}*\n{}".format(display_data["icon_name"], user_name, translated_text),
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
-    response = requests.post(result[0], payload)
+    response = requests.post(SLACK_WEBHOOK_URL, payload)
     print(response)
     return "translate"
