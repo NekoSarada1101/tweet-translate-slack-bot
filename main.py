@@ -13,12 +13,14 @@ def do_post(request):
     print("text={}, username={}".format(text, username))
     display_data = get_settings(user_name)
     print(display_data)
+    if display_data is None:
+        return "translate"
 
-    if result[0] == "" or result[1] == "":
-        return
+    if text[0] == "@":  # メンションを除外
+        return "translate"
 
-    if text[0] == "@":  # メンションなら
-        return
+    # if text[:2] == "RT":  # リツイートを除外
+    #     return "translate"
 
     # 翻訳
     translate_result = translate_client.translate(text, target_language="ja")
