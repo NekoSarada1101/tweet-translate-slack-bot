@@ -10,16 +10,18 @@ def do_post(request):
     username = request.form.get('username')  # type: str
     image = request.form.get('image')  # type: str
     text = request.form.get('text')  # type: str
+    mention = request.form.get('mention')  # type: str
     print("username=" + username)
     print("image=" + image)
     print("text=" + text)
+    print("mention=" + mention)
 
     display_data = get_settings(user_name)
     print(display_data)
     if display_data is None:
+    if mention == "false" and text[0] == "@":  # メンションを除外
         return "translate"
 
-    if text[0] == "@":  # メンションを除外
         return "translate"
 
     # if text[:2] == "RT":  # リツイートを除外
