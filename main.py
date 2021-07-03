@@ -11,10 +11,12 @@ def do_post(request):
     image = request.form.get('image')  # type: str
     text = request.form.get('text')  # type: str
     mention = request.form.get('mention')  # type: str
+    retweet = request.form.get('retweet')  # type: str
     print("username=" + username)
     print("image=" + image)
     print("text=" + text)
     print("mention=" + mention)
+    print("retweet=" + retweet)
 
     display_data = get_settings(user_name)
     print(display_data)
@@ -22,10 +24,8 @@ def do_post(request):
     if mention == "false" and text[0] == "@":  # メンションを除外
         return "translate"
 
+    if retweet == "false" and text[:2] == "RT":  # リツイートを除外
         return "translate"
-
-    # if text[:2] == "RT":  # リツイートを除外
-    #     return "translate"
 
     # 翻訳
     translate_result = translate_client.translate(text, target_language="ja")
