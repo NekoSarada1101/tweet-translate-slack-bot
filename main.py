@@ -8,8 +8,10 @@ translate_client = translate.Client()
 
 def do_post(request):
     username = request.form.get('username')  # type: str
+    image = request.form.get('image')  # type: str
     text = request.form.get('text')  # type: str
     print("username=" + username)
+    print("image=" + image)
     print("text=" + text)
 
     display_data = get_settings(user_name)
@@ -29,7 +31,7 @@ def do_post(request):
     print(translated_text)
 
     data = {  # type: dict
-        "text": "{} *{}*\n{}".format(display_data["icon_name"], user_name, translated_text),
+        "text": "{} *{}*\n{}".format(image, username, translated_text),
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
