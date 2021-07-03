@@ -1,6 +1,6 @@
 import json
 import requests
-from settings import *
+from settings import SLACK_WEBHOOK_URL
 from google.cloud import translate_v2 as translate
 
 translate_client = translate.Client()
@@ -18,9 +18,6 @@ def do_post(request):
     print("mention=" + mention)
     print("retweet=" + retweet)
 
-    display_data = get_settings(user_name)
-    print(display_data)
-    if display_data is None:
     if mention == "false" and text[0] == "@":  # メンションを除外
         return "translate"
 
