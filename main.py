@@ -1,27 +1,28 @@
 import json
 import requests
-from settings import *
+from settings import SLACK_WEBHOOK_URL
 from google.cloud import translate_v2 as translate
 
 translate_client = translate.Client()
 
 
 def do_post(request):
-    user_name = request.form.get('username')  # type: str
+    username = request.form.get('username')  # type: str
+    image = request.form.get('image')  # type: str
     text = request.form.get('text')  # type: str
-    print("user_name=" + user_name)
+    mention = request.form.get('mention')  # type: str
+    retweet = request.form.get('retweet')  # type: str
+    print("username=" + username)
+    print("image=" + image)
     print("text=" + text)
+    print("mention=" + mention)
+    print("retweet=" + retweet)
 
-    display_data = get_settings(user_name)
-    print(display_data)
-    if display_data is None:
+    if mention == "false" and text[0] == "@":  # メンションを除外
         return "translate"
 
-    if text[0] == "@":  # メンションを除外
+    if retweet == "false" and text[:2] == "RT":  # リツイートを除外
         return "translate"
-
-    # if text[:2] == "RT":  # リツイートを除外
-    #     return "translate"
 
     # 翻訳
     translate_result = translate_client.translate(text, target_language="ja")
@@ -29,7 +30,7 @@ def do_post(request):
     print(translated_text)
 
     data = {  # type: dict
-        "text": "{} *{}*\n{}".format(display_data["icon_name"], user_name, translated_text),
+        "text": "{} *{}*\n{}".format(image, username, translated_text),
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
