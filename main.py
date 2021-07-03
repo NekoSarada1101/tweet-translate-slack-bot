@@ -7,9 +7,9 @@ translate_client = translate.Client()
 
 
 def do_post(request):
-    user_name = request.form.get('username')  # type: str
+    username = request.form.get('username')  # type: str
     text = request.form.get('text')  # type: str
-    print("user_name=" + user_name)
+    print("username=" + username)
     print("text=" + text)
 
     display_data = get_settings(user_name)
