@@ -35,7 +35,13 @@
    ```
 
 5. IFTTTでAppletsを作成する。  
-   <img width="500" src="https://user-images.githubusercontent.com/46714670/107323770-34766d00-6aea-11eb-80fa-c4bf5768e20e.png">
+   <img width="500" src="https://user-images.githubusercontent.com/46714670/124374329-4e9d2b80-dcd5-11eb-8ec6-a6c6b947b1c9.png">
+
+   * username : 表示する名前
+   * image : 表示する絵文字の名前
+   * text : 翻訳するテキスト
+   * mention : メンションを表示するならtrue、しないならfalse
+   * retweet : リツイートを表示するならtrue、しないならfalse
 
 ### ライセンス
 
