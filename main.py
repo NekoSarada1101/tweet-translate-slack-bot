@@ -12,11 +12,7 @@ def do_post(request):
     text = request.form.get('text')  # type: str
     mention = request.form.get('mention')  # type: str
     retweet = request.form.get('retweet')  # type: str
-    print("username=" + username)
-    print("image=" + image)
-    print("text=" + text)
-    print("mention=" + mention)
-    print("retweet=" + retweet)
+    print('username={}, image={}, text={}, mention={}, retweet={}'.format(username, image, text, mention, retweet))
 
     if mention == "false" and text[0] == "@":  # メンションを除外
         return "translate"
